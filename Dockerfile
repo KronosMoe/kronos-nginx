@@ -16,4 +16,6 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 COPY content/ /var/www/html/
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+
+CMD [ "/bin/bash", "-c", "sudo nginx -g 'daemon off;'" ]
