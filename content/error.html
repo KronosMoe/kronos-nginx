@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--# if expr="$status = 502" -->
+    <meta http-equiv="refresh" content="5" />
+    <!--# endif -->
     <link rel="icon" type="image/x-icon"
         href="https://raw.githubusercontent.com/Mirailisc/project-comet/main/public/favicon.ico">
-    <title>Kronos</title>
+    <title>Kronos | <!--# echo var="status" default="" --></title>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900');
@@ -32,13 +35,27 @@
     main img {
         width: 300px;
     }
+
+    @media screen and (max-width: 630px) {
+        main {
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+    }
 </style>
 
 <body>
     <main>
         <div>
             <h1>Kronos</h1>
+            <!--# if expr="$status = 502" -->
             <p>There's something wrong with the server.</p>
+            <!--# else -->
+            <p>
+                <!--# echo var="status_text" default="" -->
+            </p>
+            <!--# endif -->
         </div>
         <img src="https://i.redd.it/i5inptfx6xi91.jpg" alt="image" lazy="loading" />
     </main>
